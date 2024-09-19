@@ -15,6 +15,7 @@
 #include <zephyr/device.h>
 #include <zephyr/drivers/counter.h>
 #include "cts.h"
+#include "adc.h"
 
 #define DELAY_US 1000000
 #define COUNTER_MAX_US 1000000
@@ -215,7 +216,7 @@ int calc_throughput(int secs)
 /* Counter Timeout Handler */
 static void counter_timeout_handler(const struct device *counter_dev, uint8_t chan_id, uint32_t ticks, void *user_data)
 {
-    struct counter_alarm_cfg *config = user_data;
+    // struct counter_alarm_cfg *config = user_data;
     uint32_t now_ticks;
     uint64_t now_usec;
     int now_sec;
@@ -302,6 +303,8 @@ int main(void)
     if (err) {
         LOG_INF("Couldn't initialize Bluetooth. err: %d", err);
     }
+
+    configure_saadc();
 
     LOG_INF("Running...");
     for (;;) {
