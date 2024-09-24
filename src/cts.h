@@ -31,8 +31,8 @@ struct bt_remote_service_cb {
 int send_notification(struct bt_conn *conn, uint8_t *value);
 void set_value(uint8_t btn_value);
 int bluetooth_init(struct bt_conn_cb *bt_cb, struct bt_remote_service_cb *remote_cb);
-
 int get_bytes_sent(void);
+void reset_bytes_sent(void);
 
 #ifdef __cplusplus
 }

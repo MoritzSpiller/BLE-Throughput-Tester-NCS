@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "ring_buffer.h": "c",
+        "limits": "c",
+        "rbuf.h": "c",
+        "nrfx_timer.h": "c",
+        "counter.h": "c",
+        "nrfx_gppi.h": "c",
+        "nrfy_timer.h": "c",
+        "nrf_timer.h": "c",
+        "nrfx.h": "c"
+    }
+}

@@ -147,3 +147,8 @@ int get_bytes_sent(void)
 {
     return bytes_sent;
 }
+
+void reset_bytes_sent(void)
+{
+    bytes_sent = 0;
+}
