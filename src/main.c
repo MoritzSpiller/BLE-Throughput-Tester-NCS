@@ -355,8 +355,7 @@ int main(void)
         while (SEND_DATA == 1)
         {
             uint8_t data_retrieved[244];
-            uint8_t bytes_read = 244;
-            rbuf_get_data(data_retrieved, 244);
+            uint8_t bytes_read = rbuf_get_data(data_retrieved, 244);
             if (bytes_read > 0) {
                 err = send_notification(current_conn, data_retrieved);
                 if (err) {

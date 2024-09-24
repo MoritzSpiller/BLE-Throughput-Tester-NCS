@@ -201,9 +201,6 @@ void adc_configure(void)
         LOG_ERR("nrfx_saadc_mode_trigger error: %08x", err);
         return;
     }
-
-    bool success = nrf_saadc_continuous_mode_enable_check(NRF_SAADC);
-    LOG_INF("Continuous mode enabled: %d", success);
 }
 
 void adc_start_sampling(void)
