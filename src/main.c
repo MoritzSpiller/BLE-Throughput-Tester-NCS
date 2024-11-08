@@ -151,8 +151,12 @@ void on_notif_changed(enum bt_button_notifications_enabled status)
 {
     if (status == BT_BUTTON_NOTIFICATIONS_ENABLED) {
         LOG_INF("Notifications enabled");
+        SEND_DATA = 1;
+        // counter_start(counter_dev);
     } else {
-        LOG_INF("Notifications disabled");
+        SEND_DATA = 0;
+        counter_stop(counter_dev);
+        // LOG_INF("Notifications disabled");
     }
 }
 
@@ -242,6 +246,11 @@ static void counter_timeout_handler(const struct device *counter_dev, uint8_t ch
     } else {
         LOG_INF("%u seconds sent.\n", now_sec);
         LOG_INF("Current throughput: %d bytes per second.\n", current_throughput);
+        // Set the counter alarm
+        err = counter_set_channel_alarm(counter_dev, ALARM_CHANNEL_ID, config);
+        LOG_INF("Set alarm in %u sec (%u ticks)\n",
+            (uint32_t)(counter_ticks_to_us(counter_dev, alarm_cfg.ticks) / USEC_PER_SEC),
+            alarm_cfg.ticks);
     }
 }
 
